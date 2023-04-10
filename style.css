@@ -1,0 +1,50 @@
+body{
+background-color: rgb(37, 201, 149);
+font-family: 'Ubuntu', sans-serif;
+}
+#score{
+font-size: 24px;
+margin-right: 8px;
+float:left;
+}
+#time{
+font-size: 24px;
+float:right;
+margin-left:8px;
+margin-right:8px;
+}
+.itemguess{
+color:blueviolet;
+}
+.itemguessp{
+color:darkmagenta;
+}
+h1, .show_sketch{
+display:inline-block;
+background-color: white;
+width:100%;
+display:flex;
+justify-content: space-between;
+align-items: center;
+margin:0 auto;
+}
+.container{
+position: relative;
+margin:8px;
+}
+.left{
+position: absolute;
+left:0;
+margin-left:4px;
+}
+.right{
+position:absolute;
+right:0;
+margin-right:8px;
+}
+p{
+    font-size: 24px;
+}
+#itemgivep{
+color:red;
+}
