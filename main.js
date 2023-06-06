@@ -8,11 +8,19 @@ var timer_check = "";
 var drawn_sketch = "";
 var answer_holder = "";
 var score = 0;
+function preload(){
+classifier = ml5.imageClassifier('DoodleNet');
+}
 function setup(){
+    canvas = createCanvas(300,300);
+    canvas.center();
+    background("white");
 
+    
+    canvas.mouseReleased(classifyCanvas);
 }
 function updateCanvas(){
-
+    background("white");
 }
 function check_sketch(){
 timer_counter = timer_counter + 1;
@@ -21,6 +29,10 @@ console.log(timer_counter);
  if(timer_counter > 400){
 timer_counter = 0;
 timer_check = "completed";
+var random_number = Math.floor((Math.random()*quick_draw_data_set.length)+1);
+var sketch = quick_draw_data_set[random_number];
+console.log(sketch);
+document.getElementById("itemgive").innerHTML = sketch;
  }
  if(timer_check == "completed" || answer_holder == "set"){
 timer_check = "";
@@ -29,13 +41,31 @@ updateCanvas();
  }
 }
 function draw(){
-canvas = createCanvas(300,300);
-canvas.center();
-background("white");
-check_sketch();
+    check_sketch();
+strokeWeight(6);
+stroke(0);
+if(mouseIsPressed){
+line(pmouseX,pmouseY,mouseX,mouseY);
+}
 if(drawn_sketch == sketch){
 answer_holder = "set";
 score = score + 1;
 document.getElementById("score").innerHTML = "Score:" + score;
+}
+}
+function classifyCanvas(){
+classifier.classify(canvas,gotResults);
+}
+function gotResults(error,results){
+if(error){
+console.error();
+}
+else{
+console.log(results);
+drawn_sketch = results[0].label;
+document.getElementById("itemguess").innerHTML = drawn_sketch;
+document.getElementById("confidence").innerHTML = Math.floor(results[0].confidence*100)+ "%";
+
+
 }
 }
