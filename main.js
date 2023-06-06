@@ -8,3 +8,34 @@ var timer_check = "";
 var drawn_sketch = "";
 var answer_holder = "";
 var score = 0;
+function setup(){
+
+}
+function updateCanvas(){
+
+}
+function check_sketch(){
+timer_counter = timer_counter + 1;
+document.getElementById("time").innerHTML = "Timer:" + timer_counter;
+console.log(timer_counter);
+ if(timer_counter > 400){
+timer_counter = 0;
+timer_check = "completed";
+ }
+ if(timer_check == "completed" || answer_holder == "set"){
+timer_check = "";
+answer_holder = "";
+updateCanvas();
+ }
+}
+function draw(){
+canvas = createCanvas(300,300);
+canvas.center();
+background("white");
+check_sketch();
+if(drawn_sketch == sketch){
+answer_holder = "set";
+score = score + 1;
+document.getElementById("score").innerHTML = "Score:" + score;
+}
+}

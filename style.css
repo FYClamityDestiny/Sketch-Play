@@ -48,3 +48,19 @@ p{
 #itemgivep{
 color:red;
 }
+canvas{
+border-radius: 16px;
+box-shadow: 3px 3px 3px white;
+animation-name:sixtynineomen;
+animation-duration: 4s;
+animation-iteration-count: infinite;
+border:white 4px solid;
+}
+@keyframes sixtynineomen{
+from{
+box-shadow: 1px 1px 600px rgb(255, 255, 255);
+}
+to{
+box-shadow: 1px 1px 600px rgb(136, 136, 136);
+}
+}
